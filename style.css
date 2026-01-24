@@ -1,0 +1,101 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: black;
+}
+
+
+canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* REQUIRED */
+}
+
+
+@media (min-width: 768px) {
+
+  h1 {
+   font-size: 14px;
+   font-weight: 200;
+    letter-spacing: 11px;
+}
+.logo {
+  width: 80px;
+}
+.overlay {
+ gap: 72px;
+}
+}
+
+/* Mobile background */
+@media (max-width: 767px) {
+   h1 {
+   font-size: 11px;
+   font-weight: 300;
+    letter-spacing: 5px;
+}
+
+.logo {
+  width: 60px;
+}
+.overlay {
+ gap: 48px;
+}
+}
+
+.overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  pointer-events: none;
+   opacity: 0;
+}
+
+.overlay img {
+  width: 80px;
+  margin-bottom: 24px;
+ 
+}
+
+h1 {
+  font-family: "Mrs Eaves", serif;
+  letter-spacing: 8px;
+  font-weight: 300;
+}
+
+.spacer {
+  height: 600vh; /* controls scroll length */
+}
+
+.scroll-hint {
+  position: absolute; 
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+  margin-top: 40px;
+  font-size: 14px;
+  letter-spacing: 4px;
+  opacity: 0.8;
+  text-align: center;
+  z-index: 10000;
+}
+
+.scroll-hint .arrow {
+  margin-top: 10px;
+  font-size: 24px;
+  animation: arrowMove 1.5s ease-in-out infinite;
+}
+
+@keyframes arrowMove {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(12px); }
+  100% { transform: translateY(0); }
+}
+

@@ -1,0 +1,121 @@
+gsap.registerPlugin(ScrollTrigger);
+
+const canvas = document.getElementById("hero");
+const ctx = canvas.getContext("2d");
+
+const frameCount = 240;
+const images = [];
+const seq = { frame: 0 };
+
+let cw, ch;
+
+// ---------- CANVAS SETUP ----------
+function resizeCanvas() {
+  const dpr = window.devicePixelRatio || 1;
+
+  cw = window.innerWidth;
+  ch = window.innerHeight;
+
+  canvas.width = cw * dpr;
+  canvas.height = ch * dpr;
+
+  canvas.style.width = cw + "px";
+  canvas.style.height = ch + "px";
+
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  render();
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+// ---------- IMAGE LOADING ----------
+for (let i = 1; i <= frameCount; i++) {
+  const img = new Image();
+  img.src = `frames/frame_${String(i).padStart(4, "0")}.png`;
+  images.push(img);
+}
+
+// ---------- DRAW LIKE object-fit: cover ----------
+function drawCover(img) {
+  const imgRatio = img.width / img.height;
+  const canvasRatio = cw / ch;
+
+  let drawWidth, drawHeight, x, y;
+
+  if (imgRatio > canvasRatio) {
+    drawHeight = ch;
+    drawWidth = drawHeight * imgRatio;
+    x = (cw - drawWidth) / 2;
+    y = 0;
+  } else {
+    drawWidth = cw;
+    drawHeight = drawWidth / imgRatio;
+    x = 0;
+    y = (ch - drawHeight) / 2;
+  }
+
+  ctx.drawImage(img, x, y, drawWidth, drawHeight);
+}
+
+// ---------- RENDER ----------
+function render() {
+  const img = images[seq.frame];
+  if (!img || !img.complete) return;
+
+  ctx.clearRect(0, 0, cw, ch);
+  drawCover(img);
+}
+
+// Draw first frame immediately
+images[0].onload = render;
+
+// ---------- SCROLL CONTROL ----------
+gsap.to(seq, {
+  frame: frameCount - 1,
+  snap: "frame",
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".spacer",
+    start: "top top",
+    end: "bottom bottom",
+    scrub: 0.6
+  },
+  onUpdate: render
+});
+
+// ---------- HINT AND OVERLAY FADE ----------
+const scrollHint = document.getElementById("scrollHint");
+const overlay = document.querySelector(".overlay");
+
+let hasScrolled = false;
+
+window.addEventListener("scroll", () => {
+  if (!hasScrolled && window.scrollY > 10) {
+    hasScrolled = true;
+
+    // Hide the arrow hint
+    gsap.to(scrollHint, {
+      opacity: 0,
+      y: -10,
+      duration: 0.6,
+      ease: "power2.out",
+    });
+
+    // Show the overlay (logo + text)
+    gsap.fromTo(
+      overlay,
+      { opacity: -0.5,   },
+      { opacity: 1, 
+        ease: "none" ,
+        scrollTrigger: {
+          trigger: ".spacer",
+          start: "top 50%",
+          end: "bottom bottom",
+          scrub: 0.6
+        }
+      }
+    );
+  }
+});
