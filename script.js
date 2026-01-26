@@ -33,7 +33,7 @@ resizeCanvas();
 // ---------- IMAGE LOADING ----------
 for (let i = 1; i <= frameCount; i++) {
   const img = new Image();
-  img.src = `frames/frame_${String(i).padStart(4, "0")}.jpg`;
+  img.src = `frames/frame_${String(i).padStart(4, "0")}.png`;
   images.push(img);
 }
 
