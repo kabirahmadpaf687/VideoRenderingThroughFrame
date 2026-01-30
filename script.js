@@ -119,3 +119,64 @@ window.addEventListener("scroll", () => {
     );
   }
 });
+
+// ---------- FORMS REVEAL ----------
+gsap.to(".form-container", {
+  opacity: 1,
+  duration: 1.2,
+  ease: "power2.out",
+  scrollTrigger: {
+    trigger: ".form-container",
+    start: "top 80%",
+    end: "top 50%",
+    scrub: true
+  }
+});
+
+// ---------- FORMS SUBMISSION (PHP) ----------
+const newsletterForm = document.getElementById("newsletter-form");
+const contactForm = document.getElementById("contact-form");
+
+function handleFormSubmit(form, type) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const submitBtn = form.querySelector("button");
+    const originalBtnText = submitBtn.innerText;
+    
+    // Feedback
+    submitBtn.innerText = "SENDING...";
+    submitBtn.disabled = true;
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    data.type = type;
+
+    try {
+      const response = await fetch("send-email.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        alert("Thank you! Your message has been sent.");
+        form.reset();
+      } else {
+        alert("Oops! " + (result.message || "Something went wrong.") + "\n\nDebug Info:\n" + (result.debug || "No debug info available."));
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error connecting to server.");
+    } finally {
+      submitBtn.innerText = originalBtnText;
+      submitBtn.disabled = false;
+    }
+  });
+}
+
+if (newsletterForm) handleFormSubmit(newsletterForm, "newsletter");
+if (contactForm) handleFormSubmit(contactForm, "contact");
