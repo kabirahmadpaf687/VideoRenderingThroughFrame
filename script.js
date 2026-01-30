@@ -103,12 +103,17 @@ window.addEventListener("scroll", () => {
       ease: "power2.out",
     });
 
-    // Show the overlay (logo + text)
+    // Show the overlay (logo + text) and scale it up
     gsap.fromTo(
       overlay,
-      { opacity: -0.5,   },
-      { opacity: 1, 
-        ease: "none" ,
+      { 
+        opacity: -0.5,
+        scale: 0.8 // Start smaller
+      },
+      { 
+        opacity: 1, 
+        scale: 1.5, // Get bigger
+        ease: "none",
         scrollTrigger: {
           trigger: ".spacer",
           start: "top 50%",
