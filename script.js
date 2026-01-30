@@ -142,12 +142,12 @@ gsap.fromTo(".white-overlay", {
 // ---------- FORMS REVEAL ----------
 gsap.to(".form-container", {
   opacity: 1,
-  duration: 2, // Slower duration
+  duration: 4, // Slower duration
   ease: "power2.inOut",
   scrollTrigger: {
     trigger: ".form-container",
     start: "top 95%", // Start later
-    end: "top 60%",   // End later
+    end: "top 80%",   // End later
     scrub: 1.5        // More scrub for slower feel
   }
 });

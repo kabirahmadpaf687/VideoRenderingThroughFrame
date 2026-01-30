@@ -25,15 +25,21 @@ canvas {
 
 @media (min-width: 768px) {
   h1 {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 200;
-    letter-spacing: 18px;
+    letter-spacing: 28px;
   }
   .logo {
-    width: 1220px;
+    width: 100px;
+    margin-right: 10px;
   }
   .overlay {
-    gap: 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
   }
 }
 
@@ -64,10 +70,7 @@ canvas {
   opacity: 0;
 }
 
-.overlay img {
-  width: 80px;
-  margin-bottom: 24px;
-}
+
 
 h1 {
   font-family: "Mrs Eaves", serif;
