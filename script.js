@@ -120,16 +120,30 @@ window.addEventListener("scroll", () => {
   }
 });
 
+// ---------- WHITE OVERLAY FADE ----------
+gsap.fromTo(".white-overlay", {
+  opacity: -2,
+}, {
+  opacity: 0.8,
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".spacer",
+    start: "top top",
+    end: "bottom bottom",
+    scrub: 0.6
+  }
+});
+
 // ---------- FORMS REVEAL ----------
 gsap.to(".form-container", {
   opacity: 1,
-  duration: 1.2,
-  ease: "power2.out",
+  duration: 2, // Slower duration
+  ease: "power2.inOut",
   scrollTrigger: {
     trigger: ".form-container",
-    start: "top 80%",
-    end: "top 50%",
-    scrub: true
+    start: "top 95%", // Start later
+    end: "top 60%",   // End later
+    scrub: 1.5        // More scrub for slower feel
   }
 });
 
