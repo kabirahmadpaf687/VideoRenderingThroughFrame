@@ -17,7 +17,7 @@ canvas {
 .white-overlay {
   position: fixed;
   inset: 0;
-  background: #fff;
+  background: #000;
   opacity: 0;
   pointer-events: none;
   z-index: 0; /* Above canvas, below everything else */
@@ -27,18 +27,13 @@ canvas {
   h1 {
     font-size: 26px;
     font-weight: 200;
-    letter-spacing: 28px;
+    letter-spacing: 60px;
   }
   .logo {
     width: 100px;
-    margin-right: 10px;
+    margin-right: 70px;
   }
   .overlay {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
     gap: 32px;
   }
 }
@@ -48,7 +43,8 @@ canvas {
   h1 {
     font-size: 22px;
     font-weight: 300;
-    letter-spacing: 12px;
+    letter-spacing: 36px;
+    margin-left: 50px;
   }
 
   .logo {
@@ -63,7 +59,7 @@ canvas {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 50%);
   text-align: center;
   color: white;
   pointer-events: none;
@@ -72,11 +68,6 @@ canvas {
 
 
 
-h1 {
-  font-family: "Mrs Eaves", serif;
-  letter-spacing: 8px;
-  font-weight: 300;
-}
 
 .spacer {
   height: 600vh; /* controls scroll length */

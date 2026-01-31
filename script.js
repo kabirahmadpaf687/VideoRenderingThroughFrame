@@ -3,7 +3,7 @@ gsap.registerPlugin(ScrollTrigger);
 const canvas = document.getElementById("hero");
 const ctx = canvas.getContext("2d");
 
-const frameCount = 240;
+const frameCount = 313;
 const images = [];
 const seq = { frame: 0 };
 
@@ -129,7 +129,7 @@ window.addEventListener("scroll", () => {
 gsap.fromTo(".white-overlay", {
   opacity: -2,
 }, {
-  opacity: 0.8,
+  opacity: 0.9,
   ease: "none",
   scrollTrigger: {
     trigger: ".spacer",

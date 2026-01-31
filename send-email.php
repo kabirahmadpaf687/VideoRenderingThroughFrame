@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
 
 // Recipient email
-$to = "layla@bylaylahsaleh.com";
+$to = "Layla@bylaylasaleh.com";
 
 // Get JSON data from request body
 $json = file_get_contents('php://input');
@@ -32,23 +32,19 @@ try {
     $mail->isSMTP();
     $mail->SMTPAuth   = true;
     
-    // For GMAIL:
-    $mail->Host       = 'smtp.gmail.com'; 
-    $mail->Username   = 'kabirahmadkhanpaf@gmail.com'; 
-    $mail->Password   = 'yvfmiseskgtaaoaw';       
+    // // For GMAIL:
+    // $mail->Host       = 'smtp.gmail.com'; 
+    // $mail->Username   = 'kabirahmadkhanpaf@gmail.com'; 
+    // $mail->Password   = 'yvfmiseskgtaaoaw';       
     
-    /* 
-    For HOSTINGER:
     $mail->Host       = 'smtp.hostinger.com';
-    $mail->Username   = 'your-email@yourdomain.com';
-    $mail->Password   = 'your-email-password';
-    */
+    $mail->Username   = 'Layla@bylaylasaleh.com';
+    $mail->Password   = 'NEW_PASSWORD_YOU_SET';
 
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port       = 587; 
-
     // --- RECIPIENTS ---
-    $mail->setFrom('webmaster@video-render.com', 'Video Render Web');
+    $mail->setFrom('webmaster@bylaylasaleh.com', 'By Layla Saleh');
     $mail->addAddress($to);
     $mail->addReplyTo($email, $name);
 
