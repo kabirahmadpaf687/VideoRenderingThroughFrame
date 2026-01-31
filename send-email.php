@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
 
 // Recipient email
-$to = "Layla@bylaylasaleh.com";
+$to = "Kabirahmadpaf@gmail.com";
 
 // Get JSON data from request body
 $json = file_get_contents('php://input');
@@ -37,12 +37,12 @@ try {
     // $mail->Username   = 'kabirahmadkhanpaf@gmail.com'; 
     // $mail->Password   = 'yvfmiseskgtaaoaw';       
     
-    $mail->Host       = 'smtp.hostinger.com';
+    $mail->Host       = 'smtp.gmail.com';
     $mail->Username   = 'Layla@bylaylasaleh.com';
-    $mail->Password   = 'NEW_PASSWORD_YOU_SET';
-
+    $mail->Password   = 'qsmudfutszhkjuhy';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port       = 587; 
+    
     // --- RECIPIENTS ---
     $mail->setFrom('webmaster@bylaylasaleh.com', 'By Layla Saleh');
     $mail->addAddress($to);

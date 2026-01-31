@@ -27,11 +27,11 @@ canvas {
   h1 {
     font-size: 26px;
     font-weight: 200;
-    letter-spacing: 60px;
+    letter-spacing: 50px;
+    margin-left: 50px; 
   }
   .logo {
     width: 100px;
-    margin-right: 70px;
   }
   .overlay {
     gap: 32px;
@@ -44,26 +44,29 @@ canvas {
     font-size: 22px;
     font-weight: 300;
     letter-spacing: 36px;
-    margin-left: 50px;
+    margin-left: 50px; 
   }
 
   .logo {
     width: 60px;
   }
   .overlay {
-    gap: 48px;
+    gap: 24px; /* Slightly tighter gap for mobile */
   }
 }
 
 .overlay {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 50%);
+  inset: 0; /* Cover full screen to center within */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   color: white;
   pointer-events: none;
   opacity: 0;
+  z-index: 5; /* Above white-overlay */
 }
 
 

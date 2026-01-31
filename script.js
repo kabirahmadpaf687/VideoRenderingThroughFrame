@@ -107,12 +107,12 @@ window.addEventListener("scroll", () => {
     gsap.fromTo(
       overlay,
       { 
-        opacity: -0.5,
-        scale: 0.8 // Start smaller
+        opacity: 0,
+        scale: 0.8
       },
       { 
         opacity: 1, 
-        scale: 1.5, // Get bigger
+        scale: 1.5,
         ease: "none",
         scrollTrigger: {
           trigger: ".spacer",
