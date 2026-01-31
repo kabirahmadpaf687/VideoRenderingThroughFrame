@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
 
 // Recipient email
-$to = "Kabirahmadpaf@gmail.com";
+$to = "Layla@bylaylasaleh.com";
 
 // Get JSON data from request body
 $json = file_get_contents('php://input');
