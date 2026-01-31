@@ -44,9 +44,9 @@ try {
     $mail->Port       = 587; 
     
     // --- RECIPIENTS ---
-    $mail->setFrom('webmaster@bylaylasaleh.com', 'By Layla Saleh');
+    $mail->setFrom('Layla@bylaylasaleh.com', 'Layla Saleh');
     $mail->addAddress($to);
-    $mail->addReplyTo($email, $name);
+   $mail->addReplyTo('Layla@bylaylasaleh.com', 'Layla Saleh');
 
     // --- CONTENT ---
     $mail->isHTML(false);
